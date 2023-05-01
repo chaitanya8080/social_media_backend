@@ -4,9 +4,9 @@ const User = require('../models/userModel');
 // user Register controller
 const register = async (req, res) => {
   try {
-    // const { firstname, lastname, email, password } = req.body;
+    const { name, email } = req.body;
 
-    const user = await User.findOne( req?.body?.email );
+    const user = await User.findOne( {email} );
     if (user) {
       return res.status(404).json({ message: 'User already exist' });
     }
@@ -46,7 +46,7 @@ const login = async (req, res) => {
 };
 
 
-export const getAllUsers = async (req, res) => {
+ const getAllUsers = async (req, res) => {
     try {
       const user = await User.find();
     
@@ -56,4 +56,4 @@ export const getAllUsers = async (req, res) => {
     }
   };
 
-module.exports =  { register, login };
+module.exports =  { register, login, getAllUsers };
