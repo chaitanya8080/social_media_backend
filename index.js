@@ -1,10 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 
-const userRoutes = require('./Routes/userRoutes')
-const booksRoutes = require('./Routes/booksRoutes.js')
+const userRoutes = require('./routes/userRoutes')
 const dotenv =  require("dotenv");
-const  connection  =  require("./db/db");
+// const  connection  =  require("./db/db");
 dotenv.config()
 
 const app = express();
@@ -17,7 +16,7 @@ app.use('/api', userRoutes);
 
 app.listen(7004, () => {
   try {
-    connection
+
     console.log("Server started on port 7004");
   } catch (error) {
     console.log(error.message)
